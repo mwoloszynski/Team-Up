@@ -1,0 +1,37 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+    ViewData["Description"] = "Wystąpił błąd";
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+<div style="margin: 20px">
+    <h1 class="text-danger">Error.</h1>
+    <h2>Wystąpił bład podczas przetwarzania.</h2>
+    <h2>Skontaktuj się z nami w celu rozwiązania problemu: <a href="mailto: kontakt@team-up.pl">kontakt@team-up.pl</a></h2>
+    <h2>Za utrudnienia przepraszamy.</h2>
+</div>
+
+
+
+
+@if (Model.ShowRequestId)
+{
+    <p style="margin: 20px;">
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<!--
+<h3>Development Mode</h3>
+<p>
+    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+</p>
+<p>
+    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
+    It can result in displaying sensitive information from exceptions to end users.
+    For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
+    and restarting the app.
+</p>
+-->

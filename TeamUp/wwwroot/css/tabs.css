@@ -1,0 +1,333 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+
+.tabinput { display: none; }                /* hide radio buttons */
+.tabinput + label { display: inline-block } /* show labels in line */
+.tabinput ~ .tab { display: none }          /* hide contents *//* show contents only for selected tab */
+#tab1:checked ~ .tab.content1,
+#tab2:checked ~ .tab.content2,
+#tab3:checked ~ .tab.content3,
+#tab4:checked ~ .tab.content4,
+#tab5:checked ~ .tab.content5 { display: block; }
+
+.tabinput + label {             /* box with rounded corner */
+  border: 1px solid #999;
+  background: #EEE;
+  padding: 4px 12px;
+  position: relative;
+  top: 1px;
+  margin-bottom: 0px;
+  background: #FFF;
+}
+.tabinput:checked + label { /* white background for selected tab */
+    background: #FFF;
+    border-bottom: 1px solid transparent;
+    color: #4883ff;
+}
+.tabinput ~ .tab {          /* grey line between tab and contents */
+  border-top: 1px solid #999;
+  padding: 12px;
+}
+
+.tab.content1, .tab.content2, .tab.content3, .tab.content4, .tab.content5 {
+    padding-top: 50px;
+}
+
+.tabnav li {
+    display: inline-block;
+    border: 1px solid #999;
+    background: #EEE;
+    padding: 4px 8px;
+    position: relative;
+    top: 1px;
+    margin-bottom: 0px;
+    background: #FFF;
+    max-width: 100px;
+}
+
+.tabnav li a {
+    background: #FFF;
+    border-bottom: 1px solid transparent;
+}
+
+.tabnav > li.active a {
+    color: #4883ff;
+}
+
+.tabnav ~ .tab { /* grey line between tab and contents */
+    border-top: 1px solid #999;
+    padding: 12px;
+}
+
+.upload {
+    display: inline-block;
+    background-color: #4883ff;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 0px;
+    border: 2px solid #4883ff;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+
+.helvetica-div {
+  margin: 30px;
+}
+
+.helvetica-header {
+  font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.helvetica-unordered {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.helvetica-list {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+.helvetica-list:last-child {
+  border: none;
+}
+
+.helvetica-list div {
+  text-decoration: none;
+  color: #000;
+
+  -webkit-transition: font-size 0.5s ease, background-color 0.5s ease;
+  -moz-transition: font-size 0.5s ease, background-color 0.5s ease;
+  -o-transition: font-size 0.5s ease, background-color 0.5s ease;
+  -ms-transition: font-size 0.5s ease, background-color 0.5s ease;
+  transition: font-size 0.5s ease, background-color 0.5s ease;
+  display: block;
+}
+
+.helvetica-list div:hover {
+  font-size: 30px;
+  background: #f6f6f6;
+}
+
+.helvetica-list div fieldset {
+    display: none;
+    float: right;
+}
+
+.helvetica-list div:hover fieldset {
+    display: block;
+}
+
+.helvetica-list div .specDelete
+{
+    display: none;
+    float: left;
+    color: red;
+    border: none;
+    background-color: transparent;
+}
+
+.helvetica-list div:hover .specDelete {
+    display: block;
+}
+
+.helvetica-list div .specSave
+{
+    display: none;
+    float: left;
+    color: lawngreen;
+    border: none;
+    background-color: transparent;
+}
+
+.helvetica-list div:hover .specSave {
+    display: block;
+}
+
+/* Customize the label (the container) */
+.checkbox2 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.checkbox2 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox2:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.checkbox2 input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.checkbox2 input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.checkbox2 .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+fieldset, label { margin: 0; padding: 0; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/* class applies to select element itself, not a wrapper element */
+.select-css {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+    for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+    
+  */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right .7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: .65em auto, 100%;
+}
+    /* Hide arrow icon in IE browsers */
+    .select-css::-ms-expand {
+        display: none;
+    }
+    /* Hover style */
+    .select-css:hover {
+        border-color: #888;
+    }
+    /* Focus style */
+    .select-css:focus {
+        border-color: #aaa;
+        /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+        box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+        box-shadow: 0 0 0 3px -moz-mac-focusring;
+        color: #222;
+        outline: none;
+    }
+
+    /* Set options to normal weight */
+    .select-css option {
+        font-weight: normal;
+    }
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css {
+    background-position: left .7em top 50%, 0 0;
+    padding: .6em .8em .5em 1.4em;
+}
+
+/* Disabled styles */
+.select-css:disabled, .select-css[aria-disabled=true] {
+    color: graytext;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+@media (max-width:1010px) {
+    .tabnav li {
+        margin-bottom: 0.5px;
+    }
+    .tabnav li a {
+        font-size: 12px;
+    }
+}

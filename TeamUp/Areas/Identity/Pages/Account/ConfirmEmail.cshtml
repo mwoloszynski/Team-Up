@@ -1,0 +1,15 @@
+﻿@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Potwierdź email | Team-Up";
+    ViewData["Description"] = "Team-Up: narzędzie do zakładania/wyszukiwania zespołów umożliwiających realizację start-upów";
+    var url = Request.HttpContext.Request.Scheme + "://" + Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+
+<div style="width: 100%; margin: 0 auto; text-align: center;">
+    <h2>Potwierdź email</h2>
+    <partial name="_StatusMessage" model="Model.StatusMessage" />
+</div>

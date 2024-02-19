@@ -1,0 +1,116 @@
+﻿@page
+@model TeamUp.Areas.Panel.Pages.ChatModel
+@{
+    Layout = "/Areas/Panel/Pages/_Layout.cshtml";
+    ViewBag.Data = Model.TeamId;
+    ViewBag.Name = Model.TeamUser.Team.Name;
+    ViewBag.Localization = Model.TeamUser.Team.Localization;
+    ViewBag.User = Model.UserId;
+
+    ViewData["Title"] = "Chat | " + Model.TeamUser.Team.Name;
+    ViewData["Description"] = "Panel zespołu " + Model.TeamUser.Team.Name + " - sekcja chatu";
+}
+
+<h1>Czat</h1>
+<br>
+<br>
+<br>
+<div class="col-md-12">
+    <div id="chat-fixed-height-container">
+        <div id="chat-fixed-container">
+            @if (Model != null)
+            {
+                @foreach (var message in Model.TeamChat)
+                {
+                    string containerClass, timePosition, imgPosition;
+                    if (message.UserId == Model.UserId)
+                    {
+                        containerClass = "chat-container darker";
+                        timePosition = "chat-time-left";
+                        imgPosition = "chat-img-div-r";
+                    }
+                    else
+                    {
+                        containerClass = "chat-container";
+                        timePosition = "chat-time-right";
+                        imgPosition = "chat-img-div-l";
+                    }
+
+                    @if (message.UserId == Model.TeamUser.Admin.Id)
+                    {
+                        <div class="@containerClass">
+                            <div class="@imgPosition">
+                                 <img src="data:image;base64,@Convert.ToBase64String(Model.TeamUser.Admin.ProfilePicture)">
+                            </div>
+                            <p>@message.Message</p>
+                            <span class="@timePosition">@message.SendDate.TimeOfDay @Model.TeamUser.Admin.FirstName</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="@containerClass">
+                            <div class="@imgPosition">
+                                <img src="data:image;base64,@Convert.ToBase64String(Model.TeamUser.Users.Where(x=>x.Id == message.UserId).FirstOrDefault().ProfilePicture)"> 
+                            </div>
+                            <p>@message.Message</p>
+                            <span class="@timePosition">@message.SendDate.TimeOfDay @Model.TeamUser.Users.Where(x => x.Id == message.UserId).FirstOrDefault().FirstName</span>
+                        </div>
+                    }
+
+                    <!--
+                        
+                    <div class="chat-img-div-l">
+                        @if(Model.TeamUser.Users.Where(x=>x.Id == message.UserId).Any())
+                        {
+                            <img src="data:image;base64,@Convert.ToBase64String(Model.TeamUser.Users.Where(x=>x.Id == message.UserId).FirstOrDefault().ProfilePicture)">
+                        }
+                        else
+                        {
+                            <img src="~/img/default-picture.jpg">
+                        }
+                    </div>
+
+                    @if(Model.TeamUser.Users.Where(x=>x.Id == message.UserId).Any())
+                    {
+                        <span class="chat-time-right">@message.SendDate.TimeOfDay @Model.TeamUser.Users.Where(x => x.Id == message.UserId).FirstOrDefault().FirstName</span>
+                    }
+                    else
+                    {
+                        <span class="chat-time-right">@message.SendDate.TimeOfDay Użytkownik usunięty</span>
+                    }
+                        
+                    -->
+                }
+            }
+
+
+        </div>
+    </div>
+
+    <form method="post">
+        <div class="modal-content chat-send">
+            <fieldset style="padding: 5px;">
+                <textarea name="message" rows="3" class="form-control" id="message" placeholder="Twoja wiadomość..." required style="border-color: #4883ff;"></textarea>
+            </fieldset>
+            <fieldset style="padding: 10px;">
+                <button type="submit" id="form-submit" class="btn" style="background-color: #4883ff; color: white; font-weight: bold;">Send Message</button>
+            </fieldset>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    function chatScrollToBottom() {
+        var element = document.getElementById("chat-fixed-container");
+        element.scrollTop = element.scrollHeight;
+    }
+
+    var routeId = @ViewBag.Data;
+    var userId = '@Html.Raw(Model.UserId)';
+</script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+<script>
+    window.onload = chatScrollToBottom();
+</script>

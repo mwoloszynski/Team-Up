@@ -1,0 +1,24 @@
+﻿@page
+@model TeamUp.Areas.Panel.Pages.SettingsModel
+@{
+    Layout = "/Areas/Panel/Pages/_Layout.cshtml";
+    ViewBag.Data = Model.TeamId;
+    ViewBag.Name = Model.TeamUser.Team.Name;
+    ViewBag.Localization = Model.TeamUser.Team.Localization;
+
+    ViewData["Title"] = "Ustawienia | " + Model.TeamUser.Team.Name;
+    ViewData["Description"] = "Panel zespołu " + Model.TeamUser.Team.Name + " - sekcja ustawień";
+}
+
+<h1>Ustawienia</h1>
+
+@if(Model.TeamUser.Admin.Id == Model.UserId)
+{
+    <form method="post">
+        <div style="margin-top: 50px;">
+            <fieldset>
+                <button style="background-color: red; color: white; border: 1px solid red; border-radius: 10px;" type="submit" value="delete-team" name="submitButton" asp-route-id="@Model.TeamId">Usuń Team</button>
+            </fieldset>
+        </div>
+    </form>
+}

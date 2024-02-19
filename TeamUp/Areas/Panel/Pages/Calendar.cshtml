@@ -1,0 +1,13 @@
+﻿@page
+@model TeamUp.Areas.Panel.Pages.CalendarModel
+@{
+    Layout = "/Areas/Panel/Pages/_Layout.cshtml";
+    ViewBag.Data = Model.TeamId;
+    ViewBag.Name = Model.TeamUser.Team.Name;
+    ViewBag.Localization = Model.TeamUser.Team.Localization;
+
+    ViewData["Title"] = "Kalendarz | " + Model.TeamUser.Team.Name;
+    ViewData["Description"] = "Panel zespołu " + Model.TeamUser.Team.Name + " - sekcja kalendarza";
+}
+
+<h1>Calendar</h1>

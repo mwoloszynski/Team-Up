@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Dowiedz się więcej | Team-Up";
+    ViewData["Description"] = "Narzędzie do zakładania/wyszukiwania zespołów umożliwiających realizację start-upów";
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+<section class="more-info-container">
+    <h1 style="font-size: 48px; margin-bottom: 50px;">Jak to działa?</h1>
+    <div class="more-info">
+        <div class="more-claster">
+            <img src="~/img/more/teamtemp.jpg" alt="Zespół ludzi - jak to działa" />
+            <p>
+                Kluczem do sukcesu jest odpowiednio dobrany zespół, dlatego stworzyliśmy
+                platformę umożliwiającą założenie lub dołączenie do istniejącego zespołu.
+                Wszystko po to by nasi użytkownicy mogli realizować swoje wymarzone
+                projekty.
+            </p>
+        </div>
+        <div class="more-claster">
+            <h1>Nasza wizja</h1>
+            <ul>
+                <li>
+                    Chcemy stworzyć specjalne środowisko,
+                    które w znaczący sposób pomoże
+                    użytkownikom w osiąganiu swoich celów,
+                    dobieraniu zespołu i zakładaniu start-upów.
+                </li>
+                <li>
+                    Będziemy wspierać realizację najlepszych
+                    projektów.
+                </li>
+                <li>
+                    W przyszłości otworzymy specjalne biuro
+                    dla teamów do spotkań i konsultacji.
+                </li>
+                <li>
+                    Naszym największym sukcesem będzie
+                    każdy udany projekt w team-up'owym
+                    ekosystemie.
+                </li>
+            </ul>
+        </div>
+        <div class="more-claster">
+            <img src="~/img/more/main-page.png" class="presentation" alt="Strona Główna - screen"/>
+            <p>
+                Przedstawiamy
+                wyszukiwarkę
+                strony głównej, na której
+                możesz wyszukać zespół na
+                podstawie 3 danych.
+            </p>
+        </div>
+        <div class="more-claster">
+            <img src="~/img/more/profile.png" class="presentation" alt="Profil - screen"/>
+            <p>
+                Przygoda zaczyna się w tym miejscu. Zarejestrowany użytkownik ma dostęp do profilu,
+                który uzupełnia swoimi danymi.
+            </p>
+        </div>
+        <div class="more-claster">
+            <img src="~/img/more/profile-specs.png" class="presentation" alt="Specjalizacje - screen"/>
+            <p>
+                Profil to coś więcej niż dane. Użytkownik określa swoje specjalizacje i poziom ich
+                zaawansowania. To także szybki dostęp do ustawień, wiadomości od innych i
+                panelu zespołu.
+            </p>
+        </div>
+        <div class="more-claster">
+            <div class="more-flex">
+                <div class="more-flex-choose">
+                    <h3>Którą opcję wybrać?</h3>
+                    <p>
+                        To proste! Jeśli masz pomysł,
+                        zamysł, wizję załóż zespół. Jesteś
+                        specjalistą od marketingu? Załóż
+                        profil i poszukaj komu możesz
+                        pomóc.
+                    </p>
+                </div>
+                <img src="~/img/more/choose.png" alt="Wybór" />
+            </div>
+        </div>
+        <div class="more-claster">
+            <img src="~/img/more/team-create.png" class="presentation" alt="Tworzenie zespołu - screen"/>
+            <p>
+                Przedstawiamy kreator zespołu.
+            </p>
+        </div>
+        <div class="more-claster">
+            <div class="more-flex">
+                <img src="~/img/more/success.png" alt="Sukces"/>
+                <p>
+                    Udało się założyć zespół? Być
+                    może za chwilę do jakiegoś
+                    dołączysz!<br />
+                    Dla każdego zespołu
+                    stworzyliśmy panel do
+                    zarządzania.
+                </p>
+            </div>
+        </div>
+        <div class="more-claster">
+            <img src="~/img/more/panel-users.png" class="presentation" alt="Panel zespołu - screen"/>
+            <p>
+                Panel zespołu to miejsce w którym zebrani są wszyscy członkowie,
+                administrator zespołu może dodać osobę której poszukuje lub usunąć obecną.
+                Ma również dostęp do ustawień i podań.
+            </p>
+        </div>
+        <div class="more-claster">
+            <img src="~/img/more/panel-applications.png" class="presentation" alt="Podania - screen"/>
+            <p>
+                Karty zainteresowanych danym zespołem będą pojawiać się
+                administratorowi w sekcji Podania.
+            </p>
+        </div>
+        <div class="more-claster">
+            <h2>
+                Chcielibyśmy żeby praca w zespole była prosta,
+                dlatego wprowadzamy funkcje takie jak:
+            </h2>
+            <ul>
+                <li>
+                    <b>Aktualności</b> - to wszystkie aktualne ogłoszenia w zespole
+                </li>
+                <li>
+                    <b>Post</b> - każdy członek może dodać post, który pojawi się w
+                    sekcji ogłoszeń
+                </li>
+                <li>
+                    <b>Czat</b> - miejsce w którym zespół się komunikuje
+                </li>
+                <li>
+                    <b>Zadania</b> - sekcja w której dodane są zadania do
+                    wykonania, zintegrowana z kalendarzem
+                </li>
+                <li>
+                    <b>Kalendarz</b> - zawiera ważne daty i zadania
+                </li>
+            </ul>
+        </div>
+        <div class="more-claster">
+            <img src="~/img/more/team-search2.png" class="presentation" alt="Wyszukiwarka - screen"/>
+            <p>
+                Dzięki naszej liście zespołów, poszukiwania staną się jeszcze łatwiejsze!
+            </p>
+        </div>
+    </div>
+</section>

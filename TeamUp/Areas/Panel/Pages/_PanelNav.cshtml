@@ -1,0 +1,37 @@
+﻿<!--
+<ul class="tabnav">
+    <li class="@PanelNavPages.IndexNavClass(ViewContext)"><a asp-page="./Index" asp-route-id="@ViewBag.Data">Aktualności</a></li>
+    <li class="@PanelNavPages.UsersNavClass(ViewContext)"><a asp-page="./Post" asp-route-id="@ViewBag.Data">Napisz post</a></li>
+    <li class="@PanelNavPages.UsersNavClass(ViewContext)"><a asp-page="./Chat" asp-route-id="@ViewBag.Data">Czat</a></li>
+    <li class="@PanelNavPages.UsersNavClass(ViewContext)"><a asp-page="./Users" asp-route-id="@ViewBag.Data">Członkowie</a></li>
+    <li class="@PanelNavPages.UsersNavClass(ViewContext)"><a asp-page="./Tasks" asp-route-id="@ViewBag.Data">Zadania</a></li>
+    <li class="@PanelNavPages.UsersNavClass(ViewContext)"><a asp-page="./Calendar" asp-route-id="@ViewBag.Data">Kalendarz</a></li>
+    <li class="@PanelNavPages.UsersNavClass(ViewContext)"><a asp-page="./Settings" asp-route-id="@ViewBag.Data">Ustawienia</a></li>
+    <li class="@PanelNavPages.UsersNavClass(ViewContext)"><a asp-page="./Applications" asp-route-id="@ViewBag.Data">Podania</a></li>
+</ul>
+-->
+<nav class="dr-menu dr-menu-open">
+    <div class="dr-trigger"></div>
+    <ul>
+        @*<li class="@PanelNavPages.IndexNavClass(ViewContext)"><a class="dr-icon dr-icon-news" asp-page="./Index" asp-route-id="@ViewBag.Data">Aktualności</a></li>*@
+        <li class="@PanelNavPages.IndexNavClass(ViewContext)" style="filter: grayscale(1)"><a class="dr-icon dr-icon-news">Aktualności</a></li>
+
+        @*<li class="@PanelNavPages.PostNavClass(ViewContext)"><a class="dr-icon dr-icon-post" asp-page="./Post" asp-route-id="@ViewBag.Data">Napisz post</a></li>*@
+        <li class="@PanelNavPages.PostNavClass(ViewContext)" style="filter: grayscale(1)"><a class="dr-icon dr-icon-post">Napisz post</a></li>
+
+        <li class="@PanelNavPages.ChatNavClass(ViewContext)"><a class="dr-icon dr-icon-chat" asp-page="./Chat" asp-route-id="@ViewBag.Data">Czat</a></li>
+        <li class="@PanelNavPages.UsersNavClass(ViewContext)"><a class="dr-icon dr-icon-users" asp-page="./Users" asp-route-id="@ViewBag.Data">Członkowie</a></li>
+
+        @*<li class="@PanelNavPages.TasksNavClass(ViewContext)"><a class="dr-icon dr-icon-tasks" asp-page="./Tasks" asp-route-id="@ViewBag.Data">Zadania</a></li>*@
+        <li class="@PanelNavPages.TasksNavClass(ViewContext)" style="filter: grayscale(1)"><a class="dr-icon dr-icon-tasks">Zadania</a></li>
+
+        @*<li class="@PanelNavPages.CalendarNavClass(ViewContext)"><a class="dr-icon dr-icon-calendar" asp-page="./Calendar" asp-route-id="@ViewBag.Data">Kalendarz</a></li>*@
+        <li class="@PanelNavPages.CalendarNavClass(ViewContext)" style="filter: grayscale(1)"><a class="dr-icon dr-icon-calendar">Kalendarz</a></li>
+
+        <li class="@PanelNavPages.SettingsNavClass(ViewContext)"><a class="dr-icon dr-icon-settings" asp-page="./Settings" asp-route-id="@ViewBag.Data">Ustawienia</a></li>
+        @*<li class="@PanelNavPages.SettingsNavClass(ViewContext)" style="filter: grayscale(1)"><a class="dr-icon dr-icon-settings">Ustawienia</a></li>*@
+
+        <li class="@PanelNavPages.ApplicationsNavClass(ViewContext)"><a class="dr-icon dr-icon-applications" asp-page="./Applications" asp-route-id="@ViewBag.Data">Podania</a></li>
+    </ul>
+</nav>
+<script src="~/js/panel-js.js"></script>

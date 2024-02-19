@@ -1,0 +1,39 @@
+﻿@{
+    //Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Panel użytkownika | Team-Up";
+    ViewData["Description"] = "W panelu użytkownika można zmienić swojde dane, przypisać specjalizację lub zmienić ustawienia";
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+
+<link rel="stylesheet" href="~/css/tabs.css">
+
+<section class="profile-service" id="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Profil</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <partial name="_ManageNav" />
+                    <div class="tab">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

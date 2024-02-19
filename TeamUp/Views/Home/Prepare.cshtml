@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Strona w trakcie budowy";
+    ViewData["Description"] = "Strona w trakcie budowy";
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+<div style="margin: 10px; width: 100%; text-align: center;">
+    <h1>Strona w trakcie budowy</h1>
+</div>

@@ -1,0 +1,48 @@
+﻿@{
+    //Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    Layout = "/Views/Shared/_Layout.cshtml";
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+
+<link rel="stylesheet" href="~/css/tabs.css">
+<link rel="stylesheet" href="~/css/panel-nav.css"/>
+
+
+<section class="slide-baner" id="top" style="margin-top: 50px;">
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="slide-baner-caption">
+                    <h3>@ViewBag.Name</h3>
+                    <h4>@ViewBag.Localization</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="profile-service" id="profile">
+    
+    <div class="row" style="margin: 5%">
+        <div class="col-md-8 col-md-offset-1">
+            <div class="left-content" style="text-align: center;">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dr-main">
+                <div class="side">
+                    <partial name="_PanelNav" itemid="@ViewBag.Data"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

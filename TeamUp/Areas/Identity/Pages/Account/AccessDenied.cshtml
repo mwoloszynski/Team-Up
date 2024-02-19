@@ -1,0 +1,14 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Odmowa dostępu | Team-Up";
+    ViewData["Description"] = "Team-Up: narzędzie do zakładania/wyszukiwania zespołów umożliwiających realizację start-upów";
+    var url = Request.HttpContext.Request.Scheme + "://" + Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+<header style="width: 100%; margin: 0 auto; text-align: center;">
+    <h1 class="text-danger">Odmowa dostępu</h1>
+    <p class="text-danger">Nie masz dostępu do tej strony.</p>
+</header>

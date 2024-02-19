@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Blog | Team-Up";
+    ViewData["Description"] = "Blog o tematyce startupowo-technologicznej, dostarczamy różne ciekawostki ze świata";
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <section class="b-header">
+        <div class="b-clearfix-p">
+            <div class="b-post-p" style="background-image: url('../img/head1.jpg')">
+                <input type="file" class="b-create-headimage" name="mainImage" />
+                <div class="b-text-p">
+                    <h1><input type="text" name="header" class="b-create-header" placeholder="Nagłówek"></h1>
+                    <div class="b-titles">
+                        <span class="vl">Data (automatycznie)</span>
+                        <span class="vl"><input type="text" placeholder="Kategoria" name="category" /></span>
+                        <span><input type="text" placeholder="Autor" name="author"/></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="b-content">
+        <div class="b-clearfix-content">
+            <div class="b-banner-l">
+                <div class="b-ads-skycraper">
+                </div>
+            </div>
+            <div class="b-content-post">
+                <h1><input type="text" placeholder="Tytuł" class="b-create-title" name="title" /></h1>
+
+                <h2><input type="text" placeholder="Tytuł sekcji" class="b-create-sectiontitle" name="sectionTitle"/></h2>
+                <p><textarea placeholder="Zawartość sekcji" rows="10" class="b-create-content" name="sectionContent"></textarea></p>
+
+
+                <div class="b-additional">
+                    <div class="b-slideshow">
+                        <div class="b-slides b-fade">
+                            <div class="b-create-slideshow">
+                                <input type="file" multiple name="contentImages" />
+                            </div>
+                            <img src="../img/img_mountains_wide.jpg" onclick="imgShow(this)">
+                        </div>
+
+                        <a class="b-prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="b-next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+                    <div style="text-align: center">
+                        <span class="b-dot" onclick="currentSlide(1)"></span>
+                    </div>
+                </div>
+
+                <div id="modal01" class="b-modal" onclick="this.style.display='none'">
+                    <span class="b-modal-close">&times;</span>
+                    <div class="b-modal-content">
+                        <img id="img01" style="width:100%">
+                    </div>
+                </div>
+
+                <div class="b-banner-d">
+                    <div class="b-ads-mobile">
+                    </div>
+                </div>
+
+                <div id="b-sections-additional">
+
+                </div>
+
+                <a class="b-create-addsection" onclick="newSection()">Dodaj sekcję</a>
+
+                <h4 style="margin-top: 40px;">Źródła</h4>
+                <div id="b-sources-add">
+
+                </div>
+                <a class="b-create-addsection" onclick="newSource()">Dodaj źródło</a>
+
+                <input type="submit" class="b-create-submit" value="Zapisz"/>
+
+            </div>
+            <div class="b-banner-r">
+                <div class="b-ads-skycraper">
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+
+
+<script src="~/js/blog.js"></script>
+<script>
+    function newSection() {
+        document.getElementById("b-sections-additional").innerHTML += '<h2><input type="text" placeholder="Tytuł sekcji" class="b-create-sectiontitle" name="sectionTitle" /></h2> <p><textarea placeholder="Zawartość sekcji" rows="10" class="b-create-content" name="sectionContent"></textarea></p>';
+    }
+
+    function newSource() {
+        document.getElementById("b-sources-add").innerHTML += '<input type="text" placeholder="Link do źródła" name="source"/><br>';
+    }
+</script>

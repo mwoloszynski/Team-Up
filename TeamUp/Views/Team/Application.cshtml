@@ -1,0 +1,65 @@
+﻿@{
+    @model TeamUp.Controllers.ApplicationTeamSpecModel
+    ViewData["Title"] = "Zespół: " + Model.TeamUserModel.Team.Name +  "  | Team-Up";
+    ViewData["Description"] = "Aplikuj do zespołu " + Model.TeamUserModel.Team.Name;
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+<link rel="stylesheet" href="~/css/tabs.css">
+<link rel="stylesheet" href="~/css/panel-nav.css" />
+
+<form method="post">
+    <section class="localization" id="top">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <div class="localization-caption">
+                        <h3>@Model.TeamUserModel.Team.Localization</h3>
+                        <h4>@Model.TeamUserModel.Team.Name</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide-baner" id="top" style="margin-top: 50px;">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <div class="slide-baner-caption">
+                        <h3>Stanowisko</h3>
+                        <h4>@Model.TeamUserModel.Specializations.Where(x => x.Id == Model.TeamSpecialization.SpecId).FirstOrDefault().Name</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="profile-service" id="profile">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="left-content" style="text-align: center;">
+                            <div class="row" style="text-align: center;">
+                                <h3>Dołącz wiadomość:</h3>
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <textarea rows="6" style="width: 400px;" name="message" placeholder="Wprowadź tekst"></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="btn">Wyślij</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

@@ -1,0 +1,13 @@
+﻿@page
+@model TeamUp.Areas.Panel.Pages.PostModel
+@{
+    Layout = "/Areas/Panel/Pages/_Layout.cshtml";
+    ViewBag.Data = Model.TeamId;
+    ViewBag.Name = Model.TeamUser.Team.Name;
+    ViewBag.Localization = Model.TeamUser.Team.Localization;
+
+    ViewData["Title"] = "Stwórz post | " + Model.TeamUser.Team.Name;
+    ViewData["Description"] = "Panel zespołu " + Model.TeamUser.Team.Name + " - sekcja dodawania nowego wpisu";
+}
+
+<h1>New Post</h1>

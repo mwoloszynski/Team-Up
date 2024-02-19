@@ -1,0 +1,192 @@
+﻿@{
+
+    @model TeamUp.Models.PostUserModel;
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    if(Model.PostModel.Post != null)
+    {
+        var imageUrl = Url.Content(url + @"/img/blog/" + Model.PostModel.Post.MainImage);
+        ViewData["Image"] = imageUrl;
+        ViewData["Title"] = Model.PostModel.Post.Header;
+    }
+    else
+    {
+        var imageUrl = Url.Content(url + "/img/team.png");
+        ViewData["Image"] = imageUrl;
+        ViewData["Title"] = "Nie znaleziono wpisu";
+    }
+    ViewData["Description"] = "Blog o tematyce startupowo-technologicznej, dostarczamy różne ciekawostki ze świata";
+
+}
+
+
+@if (Model.PostModel.Post == null)
+{
+    <section class="b-arcticles">
+        <div class="b-clearfix-a">
+            <h1>Nie znaleziono wpisu</h1>
+        </div>
+    </section>
+}
+else
+{
+    if (Model.isAdmin == 1)
+    {
+        <div class="b-create-clearfix-newpost" style="text-align: right;">
+            <a class="b-create-newpost" asp-action="Delete" asp-controller="Blog" style="background-color: red; border-color: red; display: inline-block;" asp-route-id="@Model.PostModel.Post.Id">Usuń Post</a>
+        </div>
+    }
+
+    <section class="b-header">
+        <div class="b-clearfix-p">
+            <div class="b-post-p" style="background-image: url(@Url.Content(url + @"/img/blog/" + Model.PostModel.Post.MainImage))">
+                <div class="b-text-p">
+                    <h1 class="b-header-bg">@Model.PostModel.Post.Header</h1>
+                    <div class="b-titles">
+                        <span class="vl">@Model.PostModel.Post.CreationDate.ToLongDateString()</span>
+                        <span class="vl">@Model.PostModel.Post.Category</span>
+                        <span>@Model.PostModel.Post.Author</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="b-content">
+        <div class="b-clearfix-content">
+            <div class="b-banner-l">
+                <div class="b-ads-skycraper">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Blog-Post-1 -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:160px;height:600px"
+                         data-ad-client="ca-pub-2060883484944819"
+                         data-ad-slot="5727961791"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+            <div class="b-content-post">
+                <h1>@Model.PostModel.Post.Title</h1>
+                <h2>@Model.PostModel.PostContent.ElementAt(0).Subtitle</h2>
+                <p style="white-space: pre-line;">
+                    @Model.PostModel.PostContent.ElementAt(0).Content
+                </p>
+                <div class="b-additional">
+                    <div class="b-slideshow">
+                        @for (int i = 0; i < Model.PostModel.PostImage.Count; i++)
+                        {
+                            <div class="b-slides b-fade">
+                                <div class="b-numbertext">@(i + 1) / @Model.PostModel.PostImage.Count</div>
+                                <img src="data:image;base64,@Convert.ToBase64String(Model.PostModel.PostImage.ElementAt(i).Image)" onclick="imgShow(this)" />
+                            </div>
+                        }
+
+
+                        <a class="b-prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="b-next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+                    <div style="text-align: center">
+                        @for (int i = 0; i < Model.PostModel.PostImage.Count; i++)
+                        {
+                            <span class="b-dot" onclick="currentSlide(@(i+1))"></span>
+                        }
+                    </div>
+                </div>
+
+                <div id="modal01" class="b-modal" onclick="this.style.display='none'">
+                    <span class="b-modal-close">&times;</span>
+                    <div class="b-modal-content">
+                        <img id="img01" style="width:100%">
+                    </div>
+                </div>
+
+
+                <div class="b-banner-d">
+                    <div class="b-ads-mobile">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- Blog-Post-2 -->
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:320px;height:100px"
+                             data-ad-client="ca-pub-2060883484944819"
+                             data-ad-slot="8952890931"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+
+                @for (int i = 1; i < Model.PostModel.PostContent.Count; i++)
+                {
+                    <h2>@Model.PostModel.PostContent.ElementAt(i).Subtitle</h2>
+                    <p style="white-space: pre-line">@Model.PostModel.PostContent.ElementAt(i).Content</p>
+                }
+
+            </div>
+            <div class="b-banner-r">
+                <div class="b-ads-skycraper">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Blog-Post-1 -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:160px;height:600px"
+                         data-ad-client="ca-pub-2060883484944819"
+                         data-ad-slot="5727961791"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/js/blog.js"></script>
+
+    @if (Model.PostModel.MorePosts != null)
+    {
+        @if (Model.PostModel.MorePosts.Count > 0)
+        {
+            <section class="b-recommend">
+                <div class="b-clearfix-r">
+                    <h2>Zobacz więcej</h2>
+                    <div class="b-lastposts">
+                        @foreach (var post in Model.PostModel.MorePosts)
+                        {
+                            <a class="b-last" asp-action="Post" asp-controller="Blog" asp-route-id="@post.Id">
+                                <div>
+                                    <div class="b-last-text">@post.Header</div>
+                                    <img class="b-last-image" src="@Url.Content(url + @"/img/blog/" + post.MainImage)">
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </section>
+        }
+    }
+
+
+    @if (Model.PostModel.PostSource != null)
+    {
+        @if (Model.PostModel.PostSource.Count > 0)
+        {
+            <section class="b-sources">
+                <div class="b-clearfix-s">
+                    <h3>Źródła</h3>
+                    <div>
+                        <ul class="b-sources-content">
+                            @for (int i = 0; i < Model.PostModel.PostSource.Count; i++)
+                            {
+                                <li><a target="_blank" rel="noopener noreferrer" href="@Model.PostModel.PostSource.ElementAt(i).Source">@Model.PostModel.PostSource.ElementAt(i).Source</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        }
+    }
+
+
+}

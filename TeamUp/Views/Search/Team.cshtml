@@ -1,0 +1,55 @@
+﻿@{
+    @model List<TeamUserModel>
+    ViewData["Title"] = "Wyszukiwarka | Team-Up";
+    ViewData["Description"] = "Wyszukiwarka zespołu, znajdź swój idealny zespół i rozpocznij pracę nad nowym projektem!";
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+<link rel="stylesheet" href="~/css/tabs.css">
+<link rel="stylesheet" href="~/css/panel-nav.css" />
+
+@if(Model != null)
+{
+    if(Model.Count == 0)
+    {
+        <h3 style="margin: 0 auto; text-align: center; margin-top: 30px;">Nie znaleziono żadnych zespołów. Spróbuj innych kryteriów wyszukiwania.</h3>
+    }
+}
+
+@foreach (var TeamUser in Model)
+{
+
+    <section class="search-service" id="search-panel">
+        <div class="search-modal-clearfix">
+            <div class="search-modal">
+                <div class="search-owner">
+                    <div class="s-img">
+                        <img src="data:image;base64,@Convert.ToBase64String(TeamUser.Admin.ProfilePicture)" />
+                    </div>
+                    <h4>@TeamUser.Admin.FirstName @TeamUser.Admin.LastName</h4>
+                </div>
+                <div class="search-description">
+                    <h3>@TeamUser.Team.Name</h3>
+                    <p>@TeamUser.Team.Description</p>
+                    <div class="blue-button">
+                        <a class="scrollTo" asp-action="Profile" asp-controller="Team" asp-route-id="@TeamUser.Team.Id">Zobacz więcej</a>
+                    </div>
+                </div>
+                <div class="search-apps">
+                    <h4>Poszukujemy do zespołu:</h4>
+                    <ul>
+                        @for (int i = 0; i < TeamUser.Slots.Count; i++)
+                        {
+                            <li>@TeamUser.Specializations.Where(x => x.Id == TeamUser.Slots[i].SpecId).FirstOrDefault().Name</li>
+                        }
+                    </ul>
+                </div>
+                <div class="search-favorite">
+                    <a style="font-size: 36px;">&#10084;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}

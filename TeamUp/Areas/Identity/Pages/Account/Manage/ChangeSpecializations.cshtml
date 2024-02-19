@@ -1,0 +1,146 @@
+﻿ @page
+@model TeamUp.Areas.Identity.Pages.Account.Manage.ChangeSpecializationsModel
+@{
+}
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<section class="spec-service" id="user-spec">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2>Twoje specjalizacje</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                    <div class="helvetica-div">
+                        <ul class="helvetica-unordered">
+                            @foreach (var spec in Model.UserSpecs)
+                            {
+                            <li class="helvetica-list"><div class="specEdit">
+                                <form id="editSpec" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            @spec.Name
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="specDelete" value="delete @Model.UserSpecRating.Where(x => x.SpecId == spec.Id).FirstOrDefault().Id" name="submitButton">&#10006;</button>
+                                            <button type="submit" class="specSave" value="save @Model.UserSpecRating.Where(x => x.SpecId == spec.Id).FirstOrDefault().Id" name="submitButton">&#10004;</button>
+                                            <fieldset class="rating">
+                                                @if (Model.UserSpecRating.Where(x => x.SpecId == spec.Id).FirstOrDefault().Stars == 5)
+                                                {
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star5" value="5" checked/><label class="full" for="@spec.Id star5"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star4" value="4" /><label class="full" for="@spec.Id star4"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star3" value="3" /><label class="full" for="@spec.Id star3"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star2" value="2" /><label class="full" for="@spec.Id star2"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star1" value="1" /><label class="full" for="@spec.Id star1"></label>
+                                                }
+                                                else if (Model.UserSpecRating.Where(x => x.SpecId == spec.Id).FirstOrDefault().Stars == 4)
+                                                {
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star5" value="5" /><label class="full" for="@spec.Id star5"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star4" value="4" checked/><label class="full" for="@spec.Id star4"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star3" value="3" /><label class="full" for="@spec.Id star3"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star2" value="2" /><label class="full" for="@spec.Id star2"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star1" value="1" /><label class="full" for="@spec.Id star1"></label>
+                                                }
+                                                else if (Model.UserSpecRating.Where(x => x.SpecId == spec.Id).FirstOrDefault().Stars == 3)
+                                                {
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star5" value="5" /><label class="full" for="@spec.Id star5"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star4" value="4" /><label class="full" for="@spec.Id star4"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star3" value="3" checked/><label class="full" for="@spec.Id star3"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star2" value="2" /><label class="full" for="@spec.Id star2"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star1" value="1" /><label class="full" for="@spec.Id star1"></label>
+                                                }
+                                                else if (Model.UserSpecRating.Where(x => x.SpecId == spec.Id).FirstOrDefault().Stars == 2)
+                                                {
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star5" value="5" /><label class="full" for="@spec.Id star5"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star4" value="4" /><label class="full" for="@spec.Id star4"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star3" value="3" /><label class="full" for="@spec.Id star3"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star2" value="2" checked/><label class="full" for="@spec.Id star2"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star1" value="1" /><label class="full" for="@spec.Id star1"></label>
+                                                }
+                                                else if (Model.UserSpecRating.Where(x => x.SpecId == spec.Id).FirstOrDefault().Stars == 1)
+                                                {
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star5" value="5" /><label class="full" for="@spec.Id star5"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star4" value="4" /><label class="full" for="@spec.Id star4"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star3" value="3" /><label class="full" for="@spec.Id star3"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star2" value="2" /><label class="full" for="@spec.Id star2"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star1" value="1" checked/><label class="full" for="@spec.Id star1"></label>
+                                                }
+                                                else
+                                                {
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star5" value="5" /><label class="full" for="@spec.Id star5"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star4" value="4" /><label class="full" for="@spec.Id star4"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star3" value="3" /><label class="full" for="@spec.Id star3"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star2" value="2" /><label class="full" for="@spec.Id star2"></label>
+                                                    <input asp-for="EditSpecRating" type="radio" id="@spec.Id star1" value="1" /><label class="full" for="@spec.Id star1"></label>
+                                                }
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div></li>
+                            }
+                        </ul>
+                    </div>                    
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="spec-service" id="spec-panel">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2>Dodaj specjalizacje</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="left-content">
+                    <form id="changeSpec" method="post">
+                        <div class="row">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <select class="select-css" asp-for="AddSpecId"  asp-items="@(new SelectList(Model.AllSpecs,"Id", "Name"))">
+                                            <option disabled selected hidden>Wybierz specjalizacje</option>
+                                        </select>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <h4>Określ poziom zaawansowania</h4>
+                                <fieldset class="rating">
+                                    <input asp-for="AddSpecRating" type="radio" id="star5" value="5" /><label class="full" for="star5"></label>
+                                    <input asp-for="AddSpecRating" type="radio" id="star4" value="4" /><label class="full" for="star4"></label>
+                                    <input asp-for="AddSpecRating" type="radio" id="star3" value="3" /><label class="full" for="star3"></label>
+                                    <input asp-for="AddSpecRating" type="radio" id="star2" value="2" /><label class="full" for="star2"></label>
+                                    <input asp-for="AddSpecRating" type="radio" id="star1" value="1" /><label class="full" for="star1"></label>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6" style="padding: 10px;">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="btn" value="add" name="submitButton">Zatwierdź</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

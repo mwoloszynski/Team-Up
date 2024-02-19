@@ -1,0 +1,62 @@
+﻿@page
+@model TeamUp.Areas.Panel.Pages.ApplicationsModel
+@{
+    Layout = "/Areas/Panel/Pages/_Layout.cshtml";
+    ViewBag.Data = Model.TeamId;
+    ViewBag.Name = Model.TeamUser.Team.Name;
+    ViewBag.Localization = Model.TeamUser.Team.Localization;
+
+    ViewData["Title"] = "Podania | " + Model.TeamUser.Team.Name;
+    ViewData["Description"] = "Panel zespołu " + Model.TeamUser.Team.Name + " - sekcja podań";
+}
+
+<h1>Podania</h1>
+<br>
+<br>
+<br>
+<div>
+    @foreach (var app in Model.Applications)
+    {
+        <div class="col-md-6" style="margin-bottom: 10px;">
+            <div class="modal-content" style="width: 70%;">
+                <img src="data:image;base64,@Convert.ToBase64String(Model.ApplicationUsers.Where(x => x.Id == app.UserId).FirstOrDefault().ProfilePicture)" style="padding: 15px;" />
+                <h2>@Model.ApplicationUsers.Where(x => x.Id == app.UserId).FirstOrDefault().FirstName @Model.ApplicationUsers.Where(x => x.Id == app.UserId).FirstOrDefault().LastName</h2>
+                <h4>Stanowisko: @Model.Specializations.Where(x => x.Id == (Model.TeamUser.Slots.Where(x => x.Id == app.TeamSpecId).FirstOrDefault().SpecId)).FirstOrDefault().Name</h4>
+                <div class="blue-button" style="padding: 15px;">
+                    <a asp-area="Identity" asp-page="/Account/UserProfile" asp-route-id="@app.UserId">Wyświetl profil</a>
+                </div>
+                <div class="blue-button" style="padding: 15px;">
+                    <a asp-area="Panel" asp-page="/UserApplication" asp-route-id="@app.Id">Wyświetl Podanie</a>
+                </div>
+            </div>
+        </div>
+    }
+    <!--
+    <div class="col-md-6" style="margin-bottom: 10px;">
+        <div class="modal-content" style="width: 70%;">
+            <img src="~/img/popular_item_4.jpg" style="padding: 15px;" />
+            <h2>Anna Nowak</h2>
+            <h4>Stanowisko: Grafik</h4>
+            <div class="blue-button" style="padding: 15px;">
+                <a>Wyświetl profil</a>
+            </div>
+            <div class="blue-button" style="padding: 15px;">
+                <a>Wyświetl Podanie</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 10px;">
+        <div class="modal-content" style="width: 70%;">
+            <img src="~/img/popular_item_3.jpg" style="padding: 15px;" />
+            <h2>Jan Kowalski</h2>
+            <h4>Stanowisko: Programista</h4>
+            <div class="blue-button" style="padding: 15px;">
+                <a>Wyświetl profil</a>
+            </div>
+            <div class="blue-button" style="padding: 15px;">
+                <a>Wyświetl Podanie</a>
+            </div>
+        </div>
+    </div>
+    -->
+</div>

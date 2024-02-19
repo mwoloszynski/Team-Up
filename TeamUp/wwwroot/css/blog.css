@@ -1,0 +1,608 @@
+
+
+.b-header {
+    text-align: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.b-arcticles {
+    text-align: center;
+    width: 100%;
+}
+
+.b-carousel {
+    text-align: center;
+    width: 100%;
+}
+
+.b-clearfix-h {
+    margin: 0 auto;
+    max-width: 1140px;
+    max-height: 660px;
+}
+
+.b-clearfix-p {
+    margin: 0 auto;
+    max-height: 660px;
+    text-align: left;
+}
+
+.b-clearfix-c {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+.b-clearfix-r {
+    margin: 0 auto;
+    max-width: 1140px;
+    text-align: center;
+}
+
+.b-clearfix-s {
+    margin: 0 auto;
+    max-height: 1140px;
+    text-align: center;
+}
+
+.b-article-l {
+    width: 565px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.b-article-r {
+    width: 565px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.b-clearfix-a {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+.b-post-h {
+    margin: 0 auto;
+    max-width: 100%;
+    height: 660px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 50%, 50% !important;
+    position: relative;
+}
+
+.b-post-a {
+    margin: 0 auto;
+    max-width: 100%;
+    height: 600px;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 50%, 50% !important;
+    position: relative;
+}
+
+.b-post-p {
+    margin: 0 auto;
+    max-width: 100%;
+    height: 660px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%, 50%;
+    position: relative;
+}
+
+@media (max-width: 1199px) {
+    .b-post-h {
+        margin-left: 50px;
+        margin-right: 50px;
+        height: 600px
+    }
+
+    .b-article-l {
+        margin-left: 50px;
+        width: 42vw;
+    }
+
+    .b-article-r {
+        margin-right: 50px;
+        width: 42vw;
+    }
+
+    .b-post-p {
+        height: 600px;
+    }
+}
+
+@media (max-width: 767px) {
+    .b-post-h {
+        margin-left: 20px;
+        margin-right: 20px;
+        height: 600px;
+    }
+
+    .b-article-l {
+        width: 100%;
+        clear: both;
+        margin: 0;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .b-article-r {
+        clear: both;
+        width: 100%;
+        margin: 0;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .b-content-post {
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .b-banner-l {
+        display: none !important;
+    }
+
+    .b-banner-r {
+        display: none !important;
+    }
+
+    .b-banner-d {
+        display: block !important;
+    }
+
+    .b-last-text {
+        font-size: 2.5vw !important;
+    }
+}
+
+.b-text {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+}
+
+.b-text h1 {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.b-text-p {
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    margin: 1vw;
+    font-family: 'Open sans', sans-serif;
+}
+
+    .b-text-p h1 {
+        color: white;
+        font-size: 36px;
+        font-weight: 700;
+    }
+
+.b-titles {
+    margin-top: 20px;
+    color: #b3b3b3 !important;
+    display: inline-block;
+    font-size: 16px;
+    padding-left: 1vw;
+}
+
+    .b-titles span {
+        padding-left: 5px;
+        padding-right: 8px;
+    }
+
+.vl {
+    border-right: 1px solid #b3b3b3 !important;
+}
+
+.b-carousel {
+    clear: both;
+}
+
+.b-pagination {
+    display: inline-block;
+}
+
+.b-pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.b-pagination a.active {
+    background-color: #4883ff;
+    color: white;
+    border: 1px solid #4883ff;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.b-content {
+    width: 100%;
+    text-align: center;
+}
+
+.b-clearfix-content {
+    margin: 0 auto;
+    max-width: 1460px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.b-banner-l {
+    width: 160px;
+    height: 600px;
+    margin-top: 150px;
+    display: block;
+}
+
+.b-ads-skycraper {
+    width: 160px;
+}
+
+.b-ads-mobile {
+    width: 320px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.b-banner-d {
+    width: 100%;
+    text-align: center;
+    height: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: none;
+}
+
+.b-banner-r {
+    width: 160px;
+    height: 600px;
+    margin-top: 150px;
+    display: block;
+}
+
+.b-content-post {
+    padding-left: 60px;
+    padding-right: 60px;
+    width: 100%;
+}
+
+.b-content-post p {
+    font-size: 18px;
+    text-align: justify;
+}
+
+.b-additional {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.b-slideshow {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+.b-slides {
+    display: block;
+    height: 300px;
+}
+
+.b-prev, .b-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.b-next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.b-prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+    /* On hover, add a black background color with a little bit see-through */
+    .b-prev:hover, .b-next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+/* Caption text */
+.b-slide-text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.b-numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.b-dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+    .b-active, .b-dot:hover {
+        background-color: #717171;
+    }
+
+/* Fading animation */
+.b-fade {
+    -webkit-animation-name: b-fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: b-fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes b-fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes b-fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.b-lastposts {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.b-last {
+    padding: 10px;
+    width: 30%;
+    position: relative;
+}
+
+.b-last-image {
+    object-fit: cover;
+    width: 100%;
+    height: 40vw;
+    max-height: 400px;
+    opacity: 0.7;
+}
+
+
+.b-last-image:hover {
+    opacity: 1;
+}
+
+.b-last-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Open sans', sans-serif;
+    font-size: 26px;
+    z-index: 2;
+}
+
+.b-last-text:hover ~ .b-last-image {
+    opacity: 1;
+}
+
+.b-slides img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.b-slide-text a {
+    text-decoration: none;
+    color: white;
+}
+
+.b-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.b-modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.b-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.b-modal-close:hover,
+.b-modal-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.b-content-post h2 {
+    text-align: left;
+}
+
+
+.b-sources-content {
+   
+}
+
+.b-sources-content li {
+    padding: 5px;
+}
+
+.b-create-header {
+    width: 100%;
+    color: black;
+    font-size: 20px;
+    font-size: 20px;
+}
+
+.b-create-headimage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #4883ff;
+    background-color: white;
+}
+
+.b-create-content {
+    width: 100%;
+}
+
+.b-create-addsection {
+    color: #d44457 !important;
+    width: 150px;
+    height: 40px;
+    border: 1px solid #4883ff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-decoration: none !important;
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+.b-create-slideshow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #4883ff;
+    background-color: white;
+}
+
+#b-sources-add {
+    margin-bottom: 40px;
+}
+
+#b-sources-add input {
+    margin: 5px;
+    width: 250px;
+    text-align: center;
+}
+
+.b-create-submit {
+    margin-top: 50px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid #4883ff;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #4883ff;
+    color: white;
+}
+
+.b-create-newpost {
+    margin: auto;
+    margin-top: 50px;
+    border: 1px solid #4883ff;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #4883ff;
+    color: white !important;
+    display: block;
+    margin-bottom: -20px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.b-create-clearfix-newpost {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.b-newpost {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}

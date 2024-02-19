@@ -1,0 +1,105 @@
+﻿@page
+@model TeamUp.Areas.Identity.Pages.Account.UserProfileModel
+@{
+    ViewData["Title"] = "Użytkownik: " + Model.userData.FirstName + " | Team-Up";
+    ViewData["Description"] = "Profil użytkownika";
+    var url = Request.HttpContext.Request.Scheme + "://" + Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+}
+
+<section class="slide-baner" id="top" style="margin-top: 50px;">
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="slide-baner-caption">
+                    <h3>Teamy</h3>
+                    @foreach (var team in Model.userTeams)
+                    {
+                        <h4>@team.Name</h4>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="profile-service" id="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1" style="text-align: right">
+                        <img src="data:image;base64,@Convert.ToBase64String(Model.userData.ProfilePicture)" />
+                    </div>
+                    <div class="col-md-6" style="padding-top: 100px;">
+                        <form id="form-submit" action="" method="post">
+                            <div class="row">
+                                <div class="col-md-8" style="margin-bottom: 5px;">
+                                    <h2>@Model.userData.FirstName @Model.userData.LastName</h2>
+                                </div>
+                                <div class="col-md-8" style="margin-bottom: 5px;">
+                                    <h4>Specjalizacje:</h4>
+                                    <ul>
+                                        @foreach(var spec in Model.userSpecs)
+                                        {
+                                            <li>@spec.Name</li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="col-md-8" style="margin-bottom: 5px;">
+                                    <h4>Opis:</h4>
+                                    <fieldset>
+                                        <textarea name="description" rows="4" class="form-control" id="description" disabled style="resize: none; padding: 2px; background-color: transparent;">@Model.userData.Description</textarea>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br />
+<section class="localization" id="top">
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="localization-caption">
+                    <h3>Lokalizacja</h3>
+                    <h4>@Model.userData.Localization</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+<section class="profile-service" id="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="left-content" style="text-align: center;">
+                        <div class="row" style="text-align: center;">
+                            <h3>Napisz wiadomość</h3>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <textarea rows="6" style="width: 400px;" placeholder="Wprowadź tekst"></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="btn">Wyślij</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    -->

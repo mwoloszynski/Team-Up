@@ -1,0 +1,326 @@
+﻿@{
+    ViewData["Title"] = "Strona Główna | Team-Up";
+    ViewData["Description"] = "Narzędzie do zakładania/wyszukiwania zespołów umożliwiających realizację start-upów";
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+    @model TeamUp.Models.HomeSpecBlogModel
+}
+
+<!--
+<div id="map" style="height: 400px; width: 100%;"></div>
+<script>
+    let map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+        });
+    }
+
+</script>
+
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8bfiOzREDqYi6379nXEnGAp73UvENFiA&callback=initMap">
+</script>
+
+-->
+
+<section class="banner" id="top">
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="banner-caption">
+                    <div class="line-dec"></div>
+                    <h2>Najlepsza wyszukiwarka Twojego zespołu</h2>
+                    <!-- <span><i>Wyszukiwarka jest w trakcie budowy</i></span> -->
+                    <div class="blue-button">
+                        <a class="scrollTo" data-scrollTo="popular" asp-action="More" asp-controller="Home">Dowiedz się więcej</a>
+                    </div>
+                </div>
+                <div class="submit-form">
+                    <form id="form-submit" method="post">
+                        <div class="row">
+                            <div class="col-md-3 first-item">
+                                <fieldset>
+                                    <input name="name" type="text" class="form-control" id="name" placeholder="Wpisz nazwę">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3 second-item">
+                                <fieldset>
+                                    <input name="location" type="text" class="form-control" id="location" placeholder="Wpisz lokalizację">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3 third-item">
+                                <fieldset>
+                                    <select name='category' onchange='this.form.()'>
+                                        <option value="" disabled selected>Wybierz Twoją specjalizacje</option>
+                                        @foreach (var spec in Model.Specs)
+                                        {
+                                            <option value="@spec.Name">@spec.Name</option>
+                                        }
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="btn">Szukaj</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="featured-places" id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+
+                    <!-- <h2>Praesent nec dui sed urna</h2> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="img/create.png" class="tu-thumb-image" alt="załóż zespół">
+                    </div>
+                    <div class="down-content" style="text-align: center; padding-bottom: 5px;">
+                        <p>Utwórz zespół i zacznij poszukiwania</p>
+                        <div class="blue-button">
+                            <a asp-action="Create" asp-controller="Team">Utwórz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="featured-item">
+                    <div class="thumb">
+                        <img src="img/find.jpg" class="tu-thumb-image" alt="znajdź zespół">
+                    </div>
+                    <div class="down-content" style="text-align: center; padding-bottom: 5px;">
+                        <p>Znajdź swój zespół i dołącz do niego</p>
+                        <div class="blue-button">
+                            <a class="scrollTo" data-scrollTo="top" href="#">Znajdź</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@try
+{
+    if (Model.Post != null)
+    {
+        <section class="b-header" style="margin-top: -20px; margin-bottom: 50px;">
+            <div class="b-clearfix-h">
+                <h1>Zajrzyj również na naszego bloga!</h1>
+                <div class="blue-button" style="margin-bottom: 15px;">
+                    <a class="scrollTo" data-scrollTo="popular" asp-action="Index" asp-controller="Blog">Przejdź na bloga</a>
+                </div>
+                <div class="b-post-h" style="background: url(@Url.Content(url + @"/img/blog/" + Model.Post.MainImage));">
+                    <div class="b-text">
+                        <h1 class="b-header-bg">@Model.Post.Header</h1>
+                        <div class="blue-button" style="margin-top: 10px;">
+                            <a class="scrollTo" asp-action="Post" asp-controller="Blog" asp-route-id="@Model.Post.Id">Przeczytaj więcej</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    }
+}
+catch (Exception ex) { }
+
+
+
+<section class="our-services" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="down-services">
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>O nas</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="service-item">
+                    <div class="icon">
+                        <div class="service-icon">
+                            <img src="img/maksymilian.jpg" alt="Maksymilian">
+                        </div>
+                    </div>
+                    <h4>Maksymilian Bednarz</h4>
+                    <p>
+                        Absolwent 1 Liceum w Krakowie.
+                        Przyjęty na studia biznesowe na
+                        University of South Florida.<br /><br />
+                        Ukończyłem 2 kursy z
+                        przedsiębiorczości na MIT
+                        online. Pasjonuje mnie biznes w
+                        praktycznym tego słowa
+                        znaczeniu, branża FinTech i
+                        lekkoatletyka.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-item">
+                    <div class="icon">
+                        <img src="img/service_icon_1.png" alt="Nasza wizja">
+                    </div>
+                    <h4>Nasza wizja</h4>
+                    <p>
+                        Większość młodych osób marzy o założeniu własnej firmy, jednym z kluczowych czynników jest odpowiedni zespół.
+                        Postanowiliśmy stworzyć miejsce w którym każdy pomysł jest cenny i każdy może dobrać odpiewiedni do swoich potrzeb zespół.
+                        Szukasz grafika, developera, specjalisty od marketingu? Być może jesteś jednym z nich i chcesz dołączyć do istniejącego zespołu?
+                        Załóż zespół teraz lub użyj wyszukiwarki do znalezienia swojego idealnego zespołu i zacznij pracę nad nowym projektem!
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-item">
+                    <div class="icon">
+                        <div class="service-icon">
+                            <img src="img/mateusz.jpg" alt="Mateusz">
+                        </div>
+                    </div>
+                    <h4>Mateusz Wołoszyński</h4>
+                    <p>
+                        Student Akademii Górniczo-Hutniczej w Krakowie.<br /><br />
+                        Programować uczę się od 8 lat, z czego
+                        ostatnie 4 zawodowo. W wolnym czasie
+                        tworzę mniejsze projekty lub
+                        dokształcam się na praktykach.
+                        Pasjonuję się motoryzacją oraz
+                        naukami ścisłymi.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="down-services">
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--
+<section id="video-container">
+    <div class="video-overlay"></div>
+    <div class="video-content">
+        <div class="inner">
+            <span>Wideo prezentacja</span>
+            <!-- <h2>W trakcie przygotowania.</h2>
+            <a href="http://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
+        </div>
+    </div>
+    <video autoplay="" loop="" muted>
+        <source src="highway-loop.mp4" type="video/mp4" />
+    </video>
+</section>
+-->
+
+
+
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <span>Skontaktuj się z nami</span>
+                    <h2></h2>
+                </div>
+                <!-- Modal button -->
+                <button id="modBtn" class="modal-btn">Kontakt</button>
+            </div>
+            <div id="modal" class="modal">
+                <!-- Modal Content -->
+                <div class="modal-content">
+                    <div class="close fa fa-close"></div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="left-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="section-heading">
+                                            <h2>Napisz do nas</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <input name="name" type="email" class="form-control" id="name" placeholder="Adres email..." required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <input name="subject" type="text" class="form-control" id="subject" placeholder="Temat..." required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Twoja wiadomość..." required=""></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="btn">Wyślij wiadomość</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="right-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="content">
+                                            <div class="section-heading">
+                                                <span>Więcej o nas</span>
+                                                <h2>Bednarz & Wołoszyński AdapTech s.c.</h2>
+                                            </div>
+                                            <!-- <p>Formularz kontaktowy jest w trakcie budowy.</p> -->
+                                            <ul>
+                                                <!--<li><span>Telefon:</span><a href="#">048-420-0110</a></li>-->
+                                                <li><span>Email:</span><a href="#">teamup.krk@gmail.com</a></li>
+                                                <li><span>Adres:</span><a href="#">ul. Lipowa 3D, 30-702 Kraków</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

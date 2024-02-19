@@ -1,0 +1,41 @@
+﻿@page
+@model TeamUp.Areas.Identity.Pages.Account.Manage.UserTeamsModel
+@{
+}
+
+
+<section class="teams-service" id="user-spec">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="wrapper">
+                <div class="section-heading">
+                    <h2>Twoje Teamy</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="helvetica-div">
+                    <ul>
+                        @foreach (var team in Model.UserTeams)
+                        {
+                            <li class="helvetica-list">
+                                <div class="row">
+                                    <style>
+                                        a:hover {
+                                            text-decoration: none;
+                                            color: #d44457;
+                                        }
+                                    </style>
+                                    <a asp-area="Panel" asp-page="/Index" asp-route-id="@team.Id">@team.Name</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+                        

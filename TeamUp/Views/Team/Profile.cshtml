@@ -1,0 +1,115 @@
+﻿@{
+    @model TeamUp.Models.TeamUserModel
+    ViewData["Title"] = "Zespół: " + Model.Team.Name + "  | Team-Up";
+    ViewData["Description"] = "Profil zespołu " + Model.Team.Name;
+    var url = Context.Request.HttpContext.Request.Scheme + "://" + Context.Request.Host;
+    var imageUrl = Url.Content(url + "/img/team.png");
+    ViewData["Image"] = imageUrl;
+
+}
+
+<link rel="stylesheet" href="~/css/tabs.css">
+<link rel="stylesheet" href="~/css/panel-nav.css" />
+
+<section class="profile-service" id="profile" style="margin-top: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1" style="text-align: right">
+                        <img src="~/img/teamprofile.jpg" />
+                    </div>
+                    <div class="col-md-6" style="padding-top: 30px;">
+                        <div class="row">
+                            <div class="col-md-8" style="margin-bottom: 5px;">
+                                <h2>@Model.Team.Name</h2>
+                            </div>
+                            <div class="col-md-8" style="margin-bottom: 5px;">
+                                <fieldset>
+                                    <textarea name="description" rows="4" class="form-control" id="description" disabled style="resize: none; padding: 2px; background-color: transparent;">@Model.Team.Description</textarea>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="slide-baner" id="top" style="margin-top: 50px;">
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="slide-baner-caption">
+                    <h3>Lokalizacja</h3>
+                    <h4>@Model.Team.Localization</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="popular-places" id="popular">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Nasz zespół</h2>
+                </div>
+            </div>
+        </div>
+        <form id="form-submit" action="" method="post">
+
+            <div class="owl-carousel owl-theme">
+                @{
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="data:image;base64,@Convert.ToBase64String(Model.Admin.ProfilePicture)" alt="">
+                            <div class="text-content">
+                                <h4>@Model.Admin.FirstName</h4>
+                                <span>Founder</span>
+                            </div>
+                            <div class="plus-button">
+                                <a asp-area="Identity" asp-page="/Account/UserProfile" asp-route-id="@Model.Admin.Id"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @foreach (var slot in Model.TeamUsers)
+                {
+                    <div class="item popular-item">
+                        <div class="thumb">
+                            <img src="data:image;base64,@Convert.ToBase64String(Model.Users.Where(x => x.Id == slot.UserId).FirstOrDefault().ProfilePicture)" alt="">
+                            <div class="text-content">
+                                <h4>@Model.Users.Where(x => x.Id == slot.UserId).FirstOrDefault().FirstName</h4>
+                                <span>@Model.Specializations.Where(y => y.Id == Model.Slots.Where(x => x.Id == slot.TeamSpecId).FirstOrDefault().SpecId).FirstOrDefault().Name</span>
+                            </div>
+                            <div class="plus-button">
+                                <a asp-area="Identity" asp-page="/Account/UserProfile" asp-route-id="@slot.UserId"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @foreach (var slot in Model.Slots)
+                {
+                    if (slot.IsAvaible == true)
+                    {
+                        <div class="item popular-item">
+                            <div class="thumb">
+                                <img src="~/img/popular_item_1.jpg" />
+                                <div class="text-content">
+                                    <h4>@Model.Specializations.Where(x => x.Id == slot.SpecId).FirstOrDefault().Name</h4>
+                                </div>
+                                <div class="plus-button">
+                                    <a asp-action="Application" asp-controller="Team" asp-route-id="@slot.Id"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+        </form>
+    </div>
+</section>

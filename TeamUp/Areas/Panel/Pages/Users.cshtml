@@ -1,0 +1,108 @@
+﻿@page
+@model TeamUp.Areas.Panel.Pages.UsersModel
+@{
+    Layout = "/Areas/Panel/Pages/_Layout.cshtml";
+    ViewBag.Data = Model.TeamId;
+    ViewBag.Name = Model.TeamUser.Team.Name;
+    ViewBag.Localization = Model.TeamUser.Team.Localization;
+
+    ViewData["Title"] = "Użytkownicy | " + Model.TeamUser.Team.Name;
+    ViewData["Description"] = "Panel zespołu " + Model.TeamUser.Team.Name + " - sekcja użytkowników";
+}
+
+<h1>Członkowie</h1>
+<br>
+<br>
+<br>
+<div class="owl-carousel owl-theme">
+    @{
+        <div class="item popular-item">
+            <div class="thumb">
+                <div class="dr-img-div">
+                    <img src="data:image;base64,@Convert.ToBase64String(Model.TeamUser.Admin.ProfilePicture)" alt="" class="dr-users-img">
+                </div>
+                <div class="text-content">
+                    <h4>@Model.TeamUser.Admin.FirstName @Model.TeamUser.Admin.LastName</h4>
+                    <span>Founder</span>
+                </div>
+            </div>
+        </div>
+    }
+    @foreach (var slot in Model.TeamUser.TeamUsers)
+    {
+        <div class="item popular-item">
+            <div class="thumb">
+                <form method="post">
+                    <div class="dr-img-div">
+                        <img src="data:image;base64,@Convert.ToBase64String(Model.TeamUser.Users.Where(x => x.Id == slot.UserId).FirstOrDefault().ProfilePicture)" alt="" class="dr-users-img">
+                        @if (Model.TeamUser.Admin.Id == Model.UserId)
+                        {
+                            <div class="dr-img-centered">
+                                <fieldset>
+                                    <button class="dr-delete-button" type="submit" value="delete-user" name="submitButton" asp-route-id="@Model.TeamId">&#10006;</button>
+                                </fieldset>
+                            </div>
+                        }
+                    </div>
+                    <div class="text-content">
+                        <h4>@Model.TeamUser.Users.Where(x => x.Id == slot.UserId).FirstOrDefault().FirstName @Model.TeamUser.Users.Where(x => x.Id == slot.UserId).FirstOrDefault().LastName</h4>
+                        <span>@Model.Specializations.Where(y => y.Id == Model.TeamUser.Slots.Where(x => x.Id == slot.TeamSpecId).FirstOrDefault().SpecId).FirstOrDefault().Name</span>
+                        <input type="hidden" name="user" value="@slot.Id" />
+                        <input type="hidden" name="spec" value="@slot.TeamSpecId" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+
+    @foreach (var slot in Model.TeamUser.Slots)
+    {
+        if (slot.IsAvaible == true)
+        {
+            <div class="item popular-item">
+                <div class="thumb">
+                    <form method="post">
+                        <div class="dr-img-div">
+                            <img class="dr-users-img" src="~/img/default-picture.jpg" />
+                            @if (Model.TeamUser.Admin.Id == Model.UserId)
+                            {
+                                <div class="dr-img-centered">
+                                    <fieldset>
+                                        <button class="dr-delete-button" type="submit" value="delete-spec" name="submitButton" asp-route-id="@Model.TeamId">&#10006;</button>
+                                    </fieldset>
+                                </div>
+                            }
+                        </div>
+                        <div class="text-content">
+                            <h4>Poszukiwany</h4>
+                            <input style="border: none; background-color: transparent; text-align: center; max-width: 199px;" type="text" disabled name="spec" value="@Model.Specializations.Where(x => x.Id == slot.SpecId).FirstOrDefault().Name"/>
+                            <input type="hidden" name="spec" value="@slot.Id"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    @if (Model.TeamUser.Admin.Id == Model.UserId)
+    {
+        <div class="item popular-item">
+            <div class="thumb">
+                <form method="post">
+                    <div class="dr-img-div">
+                        <div class="dr-add">
+                            <fieldset>
+                                <button type="submit" value="add" name="submitButton" asp-route-id="@Model.TeamId">&#43;</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="text-content">
+                        <h4>Dodaj</h4>
+                        <select class="select-css" asp-for="AddSpecId" asp-items="@(new SelectList(Model.Specializations,"Id", "Name"))" style="height: 30px; width: 200px; padding-top: 5px;">
+                            <option disabled selected hidden>Specjalizacja</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
