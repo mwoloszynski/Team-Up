@@ -15,7 +15,9 @@
 ![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/98f1e8f6-4224-4390-9d1a-e7e67112dc24)
 
 
-We also have a visual design of the application to which we wanted to update to. Below some of the concepts designs:
+
+## We also have a visual design of the application to which we wanted to update to. 
+## Below some of the concepts designs:
 ![BLOG](https://github.com/mwoloszynski/Team-Up/assets/139255497/9aa8505b-2602-4d5d-a741-158b54b0c696)
 
 ![TWORZENIE TEAMU](https://github.com/mwoloszynski/Team-Up/assets/139255497/a3ff8137-1bc7-405d-bfc8-458f5ab3ae83)
