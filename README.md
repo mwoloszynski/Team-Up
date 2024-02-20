@@ -12,7 +12,7 @@
 ![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/878e2186-4ba8-4352-9edf-a980110aa2cd)
 
 ## Team manager
-![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/98f1e8f6-4224-4390-9d1a-e7e67112dc24)
+![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/c957c118-7390-4eb7-a0c4-4a0146c6b61e)
 
 
 
