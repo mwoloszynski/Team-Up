@@ -6,7 +6,8 @@
 ![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/ed6db386-58bc-4129-9cb9-970eaebd340e)
 
 ## User profile
-![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/ba0a6ef5-75fe-4827-9ad3-e6eca7b6d885)
+![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/5c38afb4-5e3a-4928-87d7-34a0846eb147)
+
 
 ## Creating a team
 ![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/878e2186-4ba8-4352-9edf-a980110aa2cd)
