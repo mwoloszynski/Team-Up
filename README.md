@@ -1,6 +1,8 @@
 # "Facebook for startups"
 # Application that connects people into teams and allows them to work on own projects and startups
-
+- ASP.NET
+- EntityFramework
+- MVC
 
 ## Main page
 ![obraz](https://github.com/mwoloszynski/Team-Up/assets/139255497/ed6db386-58bc-4129-9cb9-970eaebd340e)
